@@ -1,0 +1,69 @@
+{
+    "catalogueNumberWithPrice" : [
+        {
+          "cNo": "SHIRT#09823",
+          "price": 687
+        },
+        {
+          "cNo": "SHIRT#87324",
+          "price": 2384
+        },
+        {
+          "cNo": "SHIRT#92834",
+          "price": 823
+        },
+        {
+          "cNo": "SHIRT#92837",
+          "price": 635
+        },
+        {
+          "cNo": "SHIRT#56298",
+          "price": 872
+        },
+        {
+          "cNo": "SHIRT#93458",
+          "price": 734
+        },
+        {
+          "cNo": "SHIRT#16523",
+          "price": 1832
+        }
+    ],
+    "sizeTShirt": ["XS", "S", "M", "L", "XL", "XXL"],
+    "colors": ["White", "Black", "Green", "Navy Blue", "Olive Green", "Brown"],
+    "cityState": [
+        {
+          "state": "Andhra Pradesh",
+          "cities": ["Adoni", "Amaravati", "Anantapur", "Chandragiri", "Chittoor", "Dowlaiswaram", "Eluru", "Guntur", "Kadapa", "Kakinada", "Kurnool", "Machilipatnam", "Nagarjunakoṇḍa", "Rajahmundry", "Srikakulam", "Tirupati", "Vijayawada", "Visakhapatnam", "Vizianagaram", "Yemmiganur"]
+        },
+        {
+          "state": "Arunachal Pradesh",
+          "cities": ["Itanagar"]
+        },
+        {
+          "state": "Gujarat",
+          "cities": ["Ahmadabad", "Amreli", "Bharuch", "Bhavnagar", "Bhuj", "Dwarka", "Gandhinagar", "Godhra", "Jamnagar", "Junagadh", "Kandla", "Khambhat", "Kheda", "Mahesana", "Morbi", "Nadiad", "Navsari", "Okha", "Palanpur", "Patan", "Porbandar", "Rajkot", "Surat", "Surendranagar", "Valsad", "Veraval"]
+        },
+        {
+          "state": "Goa",
+          "cities": ["Madgaon", "Panaji"]
+        },
+        {
+          "state": "Delhi",
+          "cities": ["Delhi", "New Delhi"]
+        },
+        {
+          "state": "Chhattisgarh",
+          "cities": ["Ambikapur", "Bhilai", "Bilaspur", "Dhamtari", "Durg", "Jagdalpur", "Raipur", "Rajnandgaon"]
+        },
+        {
+          "state": "Bihar",
+          "cities": ["Ara", "Barauni", "Begusarai", "Bettiah", "Bhagalpur", "Bihar Sharif", "Bodh Gaya", "Buxar", "Chapra", "Darbhanga", "Dehri", "Dinapur Nizamat", "Gaya", "Hajipur", "Jamalpur", "Katihar", "Madhubani", "Motihari", "Munger", "Muzaffarpur", "Patna", "Purnia", "Pusa", "Saharsa", "Samastipur", "Sasaram", "Sitamarhi", "Siwan"]
+        },
+        {
+          "state": "Assam",
+          "cities": ["Dhuburi", "Dibrugarh", "Dispur", "Guwahati", "Jorhat", "Nagaon", "Sivasagar", "Silchar", "Tezpur", "Tinsukia"]
+        }
+    
+    ]
+}

@@ -1,0 +1,21 @@
+.order-form {
+    padding: 20px;
+
+    form {
+        margin-top: 10px;
+        .form-fields-container {
+            display: flex;
+            gap: 20px;
+        }
+    }
+
+    .next-btn {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .action-btns {
+        display: flex;
+        justify-content: space-between;
+    }
+}
