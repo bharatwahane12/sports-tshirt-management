@@ -3,8 +3,6 @@ import { AfterViewInit, Component, inject, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 import { OrderDetail } from '../models/order-detail.model';
-import { BillGeneratorService } from '../services/bill-generator.service';
-import { OrdersService } from '../services/orders.service';
 import { OrderFormComponent } from '../order-form/order-form.component';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +13,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
+import { Store } from '@ngrx/store';
+import { selectAllOrders } from '../orders/orders.selector';
+import { deleteOrder } from '../orders/orders.actions';
+import { BillGeneratorService } from '../services/bill-generator/bill-generator.service';
 
 @Component({
   selector: 'app-order-details-table',
@@ -44,22 +46,22 @@ export class OrderDetailsTableComponent implements AfterViewInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   readonly dialog = inject(MatDialog);
   billGeneratorService = inject(BillGeneratorService);
-  ordersService = inject(OrdersService);
 
   displayedColumns: string[] = ['Order Number','Customer Name', 'Phone Number', 'Email', 'Address', 'Quantity', 'Ordered Date', 'Delivery Date', 'expand', 'star'];
   dataSource: any;
   expandedOrder: OrderDetail | null | undefined;
 
+  constructor(private store: Store<any>) { }
+
   ngAfterViewInit(): void {
-    this.ordersService.getOrders().subscribe(orders => {
-      this.dataSource = new MatTableDataSource(orders);
+    this.store.select(selectAllOrders).subscribe(ordersData => {
+      this.dataSource = new MatTableDataSource(ordersData);
       this.dataSource.paginator = this.paginator;
     });
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(this.dataSource)
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
@@ -86,6 +88,6 @@ export class OrderDetailsTableComponent implements AfterViewInit{
   }
 
   deleteOrder(order: OrderDetail) {
-    this.ordersService.deleteOrder(order.orderNumber);
+    this.store.dispatch(deleteOrder({orderNumber: order.orderNumber}));
   }
 }

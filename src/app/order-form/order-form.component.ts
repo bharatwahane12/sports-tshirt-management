@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 
 import { OrderDetail } from '../models/order-detail.model';
 import * as CONSTANTS from '../JSON Data/constants.json';
-import { OrdersService } from '../services/orders.service';
+import { OrdersService } from '../services/orders/orders.service';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +13,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { createOrder, updateOrder } from '../orders/orders.actions';
 
 @Component({
   selector: 'app-order-form',
@@ -65,6 +67,8 @@ export class OrderFormComponent {
     pincode: [this.isEdit ? this.data.element.address.pincode : '', Validators.required],
   });
 
+  constructor(private store: Store) { }
+
   updatePrice(event: any) {
     this.firstFormGroup.patchValue({
       price: this.catalogueNumberWithPrice.find((each: any) => each.cNo === event.value)?.price.toFixed(2).toString()
@@ -95,12 +99,12 @@ export class OrderFormComponent {
   }
 
   placeOrder() {
-    this.orderDetails = this.getUpdatedOrderDetailsValue(this.firstFormGroup.value, this.secondFormGroup.value)
+    this.orderDetails = this.getUpdatedOrderDetailsValue(this.firstFormGroup.value, this.secondFormGroup.value);
 
     if(!this.isEdit) {
-      this.ordersService.placeOrder(this.orderDetails);
+      this.store.dispatch(createOrder({order: this.orderDetails}));
     } else {
-      this.ordersService.updateOrder(this.orderDetails);
+      this.store.dispatch(updateOrder({order: this.orderDetails}));
     }
   }
 
@@ -138,6 +142,6 @@ export class OrderFormComponent {
         catalogueNumber: tshirtDetails.catalogueNumber,
         price: tshirtDetails.price
       }
-    }
+    };
   }
 }
